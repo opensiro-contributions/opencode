@@ -61,7 +61,11 @@ const run = Effect.fnUntraced(function* (warming: unknown, cache?: Provider.Cach
           Clock.currentTimeMillis.pipe(
             Effect.tap((now) => Effect.sync(() => warms.push(now / 60_000))),
             Effect.andThen(Effect.sleep(ping)),
-            Effect.as({ text: "OK" }),
+            Effect.as({
+              text: "OK",
+              tokens: { input: 0, output: 0, reasoning: 0, cache: { read: 0, write: 0 } },
+              cost: Money.USD.zero,
+            }),
           ),
         hook: (name, callback) => {
           if (name === "context") contextHook = callback as (input: SessionContext) => Effect.Effect<void>
