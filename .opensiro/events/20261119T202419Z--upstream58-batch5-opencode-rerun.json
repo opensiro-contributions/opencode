@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "20261119T202419Z--upstream58-batch5-opencode-rerun",
+  "recorded_at": "2026-11-19T20:24:19Z",
+  "actor": "OpenSiro AI assistant (user-requested Upstream #58 five-case rerun)",
+  "kind": "RESEARCH",
+  "decision": "NO_GO",
+  "evidence_urls": [
+    "https://github.com/opensiro-contributions/opencode/commit/0014547bb4dcc5c46fef60b2a2538b68be5ffb7f",
+    "https://github.com/opensiro-contributions/opencode/blob/0014547bb4dcc5c46fef60b2a2538b68be5ffb7f/.opensiro/issues/opencode-session-collision-20261119/roadmap.md",
+    "https://github.com/opensiro/upstream/issues/58"
+  ],
+  "note": "Proposal-gate source-first rerun recorded in canonical Human/AI/Receipt. Cross-session undo/corruption is concrete, but original source-native rollback/snapshot fixes #64359/#63475 and original Issues #33940/#56282 are the first priority. No independently needed autonomous S2 choice loop is established. Research NO_USEFUL_CHANGE; native tests NOT_RUN, external publication not authorized.",
+  "next_action": "Test session rewind and concurrent SQLite under supported filesystems after native original fixes; do not duplicate PRs."
+}
