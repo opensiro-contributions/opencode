@@ -1,28 +1,42 @@
-# anomalyco/opencode — Upstream #58 independent Human decision
+# OpenCode — repeated NO_GO, concurrent session interference (2026-11-20)
 
-**Target transition:** NO_QUALIFIED_C_TARGET
-**Proposal-stage decision:** NO_GO
-**Research disposition:** NO_USEFUL_CHANGE
+**Level 1 / Human decision.** Current-source recheck of existing Upstream #58 `NO_GO`; non-blind rerun, not a new independent first attempt.
 
-[roadmap.md](roadmap.md) — canonical receipt; [constructor-sufficiency.md](constructor-sufficiency.md) — technical AI contract. Internal draft, NOT PUBLISHED.
+**Target transition:** `NO_QUALIFIED_C_TARGET`
+**Proposal-stage decision:** `NO_GO`
+**Research disposition:** `NO_USEFUL_CHANGE`
 
-## Accepted baseline and current source
+[roadmap.md](roadmap.md) · [constructor-sufficiency.md](constructor-sufficiency.md)
 
-Accepted historical [Index review](https://github.com/opensiro/vsm-harness-index/blob/c2e43bf4750841277b3e58d8ba80314121734764/assessments/op/opencode.md) (2026-09-15, Profile 0.2.1, Skills 0.3.1; blob `60cd4ec5d2dd5ba620c815e3579d198ab5274036`). Original current [HEAD](https://github.com/anomalyco/opencode/commit/b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c) is separately pinned and not automatically reclassified.
+## Decision
 
-| Function / role | Historical Index state | Current owner/closure | Priority / candidate |
+**NO_GO to building an additional autonomous VSM S2=C peer controller now.** This does **not** mean parallel OpenCode sessions are free of data-loss risks. The original [#56282](https://github.com/anomalyco/opencode/issues/56282) is OPEN for network-filesystem WAL corruption. [#33940](https://github.com/anomalyco/opencode/issues/33940) is CLOSED because of v1→v2 triage, not verified v2 regression resolution.
+
+Current original source is [`dev@11883188a61b12a30bc4fb263cd217343981ca37`](https://github.com/anomalyco/opencode/commit/11883188a61b12a30bc4fb263cd217343981ca37). The [accepted Index](https://github.com/opensiro/vsm-harness-index/blob/c2e43bf4750841277b3e58d8ba80314121734764/assessments/op/opencode.md) is historical, not regraded: `review_ref=95daf90670b7c039c436c85537da5fbfe2205b41`, reviewed 2026-09-15, Profile 0.2.1 / Methodology 0.3.1, blob `60cd4ec5d2dd5ba620c815e3579d198ab5274036`.
+
+## Six-function current-source screen
+
+| Function | Historical state | Current observed owner/closure | New C justification |
 | --- | --- | --- | --- |
-| **S1 · Operations** | A | standard agent performs autonomous tool operations and responds to results | NO_TARGET / DEFER |
-| **S2 · Coordination** | — | nested task delegation lacks independent peer interference regulator | NO_TARGET / DEFER |
-| **S3 · Current regulation** | — | parent-child control alone is not full-workspace S3 | NO_TARGET / DEFER |
-| **S3* · Independent audit** | — | no protected independent corrective review evidenced | NO_TARGET / DEFER |
-| **S4 · Prospective environment** | — | current coding exploration is not future environmental analysis | NO_TARGET / DEFER |
-| **S5 · Ultimate identity/policy** | — | human/deployer governance and configured permissions retain ultimate policy right | NO_TARGET / DEFER |
+| **S1 · Operations** | A | Agent runs code/tools in a session and receives tool/model feedback | Existing, no C target |
+| **S2 · Coordination** | — | SessionRunCoordinator serializes by session key, but distinct sessions share paths; native snapshot/worktree repair is needed | No independent C need proven |
+| **S3 · Current management** | — | Users/host control overall task priority; individual sessions lack autonomous whole-portfolio decision right | Not justified |
+| **S3* · Audit** | — | Errors/traces/snapshot capture alone do not have separate corrective authority | Not justified |
+| **S4 · Future adaptation** | — | No supported prospective external-environment choice-to-S3 loop in this case | Not justified |
+| **S5 · Ultimate policy** | — | User/project configuration and maintainer authority remain outside autonomous runtime | Parent-reserved |
 
-## Operator question and answer
+The six symbols describe historical function *ownership*, not maturity. No automatic promotion from `—` to `C`.
 
-Avoid one concurrent session's undo reverting another session's edits and prevent shared-store corruption. Track A native: Open session undo conflict and shared SQLite filesystem failures are tracked in original Issues. Open PR #64359 handles parent/subagent rollback tracking, #63475 handles pruned snapshot safety; none is merged proof of completed conflict fix.. Track B: No added autonomous S2=C controller at this stage; prefer source-native rollback ownership, optimistic conflict checks/transaction boundaries and filesystem-safe storage investigation in tracked Issues/PRs.. **NO_GO** because After scoped native snapshot and rollback fixes, a reproducible peer coordination problem still needs a developer-composed autonomous negotiator choosing among conflicting session commitments and feeding a lawful new work plan back to both sessions remains unproven and the existing native work is better scoped. This is not a claim the original issues were resolved.
+## Existing solution versus new controller
 
-## Evidence and next step
+| Source-native Track A | Optional Track B | Verdict |
+| --- | --- | --- |
+| [SessionRevert](https://github.com/anomalyco/opencode/blob/11883188a61b12a30bc4fb263cd217343981ca37/packages/core/src/session/revert.ts) selects files from session messages; [Snapshot.restore](https://github.com/anomalyco/opencode/blob/11883188a61b12a30bc4fb263cd217343981ca37/packages/core/src/snapshot.ts) restores paths | Add actor arbitrating conflicts between peer agents | No proof deterministic per-file CAS/worktree isolation would fail |
+| [#64359](https://github.com/anomalyco/opencode/pull/64359) OPEN on child snapshot provenance; [#63475](https://github.com/anomalyco/opencode/pull/63475) OPEN legacy pruned-tree rollback | Independent autonomous reviewer | Does not fix missing tree or old file content |
+| [#56282](https://github.com/anomalyco/opencode/issues/56282) OPEN; SQLite WAL on shared network FS; local-state/single-writer alternative | Agent DB coordinator | Cannot supply missing filesystem lock guarantees |
 
-Original [packages/core/src/session/revert.ts](https://github.com/anomalyco/opencode/blob/b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c/packages/core/src/session/revert.ts); [packages/core/src/session/session.ts](https://github.com/anomalyco/opencode/blob/b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c/packages/core/src/session/session.ts); [specs/v2/session.md](https://github.com/anomalyco/opencode/blob/b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c/specs/v2/session.md); native links [issues / 33940](https://github.com/anomalyco/opencode/issues/33940); [issues / 56282](https://github.com/anomalyco/opencode/issues/56282); [pull / 64359](https://github.com/anomalyco/opencode/pull/64359); [pull / 63475](https://github.com/anomalyco/opencode/pull/63475). P1: Compare active #64359/#63475 actual patches and original #33940/#56282 reproduction; determine independent peer conflict ownership only after base bugs fixed. Prior OpenCode case NO_GO on native-first S2; current source tree moves task behavior to core and open rollback PRs continue to cover the bounded need. No independent novel C requirement emerges.. New tests NOT_RUN, cost NOT_MEASURED. No third-party publication, source edit or Index regrade. Owner ACTIVE/ALLOW applies to internal fork meta only. AI-assisted draft.
+**P0** no qualified new C target. **P1** compare/validate native snapshot revert regression, file ownership, worktree separation and SQLite storage invariants under disposable tests. **P2** independent S2 actor only if two legitimate agent commitments cannot be resolved by least-cost native controls.
+
+**Falsifier:** two lawful parallel session edits still collide even after native per-file version guard + isolated worktrees, and an independently composed, parent-authorized mediator makes a distinct admit/defer/replan decision with reproducibly better later task outcomes.
+
+**Runtime tests:** NOT_RUN. **Cost:** NOT_MEASURED. **Publication:** no external Issue/PR/comment or fork Issue; do not call closed v1 #33940 a shipped fix.

@@ -1,23 +1,24 @@
-# anomalyco/opencode — independent Upstream #58 v0.18 rerun
+# OpenCode — Upstream #58 repeated NO_GO source recheck
 
-**Research observation:** 2026-11-19 · **Original HEAD:** [b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c](https://github.com/anomalyco/opencode/commit/b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c) · **Index:** accepted historical state, not updated.
+**Current observation:** 2026-11-20 · **Original default dev HEAD:** [11883188a61b12a30bc4fb263cd217343981ca37](https://github.com/anomalyco/opencode/commit/11883188a61b12a30bc4fb263cd217343981ca37) · **Index:** accepted historical assessment (reviewed 2026-09-15, unchanged).
 
-- **Proposal-stage decision:** NO_GO
-- **Research disposition:** NO_USEFUL_CHANGE
-- **Target transition:** NO_QUALIFIED_C_TARGET
-- **Owner control:** ACTIVE / ALLOW for internal OpenSiro metadata (owner event `20261119T182226Z--owner-upstream58-active`)
-- **Canonical atomic case commit:** [0014547bb4dcc5c46fef60b2a2538b68be5ffb7f](https://github.com/opensiro-contributions/opencode/commit/0014547bb4dcc5c46fef60b2a2538b68be5ffb7f)
-- [Canonical proposal-gate roadmap receipt](https://github.com/opensiro-contributions/opencode/blob/0014547bb4dcc5c46fef60b2a2538b68be5ffb7f/.opensiro/issues/opencode-session-collision-20261119/roadmap.md) — historical vector, full six functions, A/B, rights, verdict and cost
-- [Human Issue draft](https://github.com/opensiro-contributions/opencode/blob/0014547bb4dcc5c46fef60b2a2538b68be5ffb7f/.opensiro/issues/opencode-session-collision-20261119/issue.md) — central Index starting point and combined six-function table
-- [AI/developer sufficiency contract](https://github.com/opensiro-contributions/opencode/blob/0014547bb4dcc5c46fef60b2a2538b68be5ffb7f/.opensiro/issues/opencode-session-collision-20261119/constructor-sufficiency.md) — source-backed options, falsifier and proposed native acceptance
-- [Upstream #58](https://github.com/opensiro/upstream/issues/58) — internal queue owner
+- **New scoped proposal-stage decision:** **NO_GO** (`NO_QUALIFIED_C_TARGET`)
+- **Research disposition:** **NO_USEFUL_CHANGE**
+- **Original concern:** prevent one session's `/undo` overwriting another session's work and handle SQLite WAL on shared network homes, without fabricating a new autonomous S2 function
+- **Current owner state:** ACTIVE / ALLOW for internal `opensiro/meta` case maintenance
+- **Classification:** REPEATED SOURCE-FIRST RECHECK, **NON_BLIND**; do not count as a new strict independent #58 first attempt
+- **Current [roadmap.md](roadmap.md) · [Human issue.md](issue.md) · [AI constructor-sufficiency.md](constructor-sufficiency.md)** — full current source pins and rationale
+- **Historical first independent canonical case:** [0014547bb4dcc5c46fef60b2a2538b68be5ffb7f](https://github.com/opensiro-contributions/opencode/commit/0014547bb4dcc5c46fef60b2a2538b68be5ffb7f), source `dev@b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c` (preserved in Git history)
+- **Coordination:** [Upstream #58](https://github.com/opensiro/upstream/issues/58) and [internal PR #72](https://github.com/opensiro/upstream/pull/72)
 
-## Distinction from previous case
+## Native overlap / exact boundary
 
-Cross-session undo/corruption is concrete, but original source-native rollback/snapshot fixes #64359/#63475 and original Issues #33940/#56282 are the first priority. No independently needed autonomous S2 choice loop is established.
+- Original [#33940](https://github.com/anomalyco/opencode/issues/33940) is CLOSED due to V1→V2 triage, **not** proof of a V2 fix
+- Original [#56282](https://github.com/anomalyco/opencode/issues/56282) remains OPEN for network filesystem SQLite contention/corruption
+- [PR #64359](https://github.com/anomalyco/opencode/pull/64359) OPEN, latest checked head `e5ebc83a7d2078d6884af339b053768af3dd612b`, parent/nested-subagent rollback snapshots; [PR #63475](https://github.com/anomalyco/opencode/pull/63475) OPEN legacy packages/opencode missing-tree safety (not shipped V2)
+- [PR #54396](https://github.com/anomalyco/opencode/pull/54396) CLOSED_UNMERGED busy retry; no imported claims of merged work
+- Existing per-session execution serialization and path-scoped snapshot restore do not prove an independently valuable S2 actor. Cheapest native controls are per-file revision checks, worktree isolation and filesystem-compatible storage.
 
-## Validation and delivery
+## Validation / publication
 
-Official `scripts/validate_capability_roadmap.py` from Upstream main `be03ced5ed5d3b7210762df612dc4b3f452c1a73`: **PASS** for all three published files, independently downloaded from pinned GitHub commit. This is a structural check, NOT native/semantic validation. Native tests: **NOT_RUN**. Measured user benefit/cost: **NOT_MEASURED**.
-
-Rights: original and matching fork parent checked; no original-facing publication, no fork GitHub Issue, no product implementation, no accepted Index regrade. Both publications **DRAFT — NOT PUBLISHED**. Next: Test session rewind and concurrent SQLite under supported filesystems after native original fixes; do not duplicate PRs.
+Upstream main v0.18 `scripts/validate_capability_roadmap.py` checked the three current case files locally: **STRUCTURAL PASS**. Original native runtime tests: **NOT_RUN**. Benefit and cost: **NOT_MEASURED**. No original/fork GitHub Issue or product code publication, Index regrade, independent source-trust attestation or maintainer acceptance. New source-pinned metadata commit and event are read back separately before claiming remote persistence.

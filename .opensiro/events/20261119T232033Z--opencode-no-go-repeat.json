@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "20261119T232033Z--opencode-no-go-repeat",
+  "recorded_at": "2026-11-19T23:20:33Z",
+  "actor": "ChatGPT source-first operator under Upstream #58 owner request",
+  "kind": "CHECKPOINT",
+  "decision": "REPEATED_NO_GO / NO_USEFUL_CHANGE (NO_QUALIFIED_C_TARGET)",
+  "evidence_urls": [
+    "https://github.com/opensiro/upstream/issues/58",
+    "https://github.com/anomalyco/opencode/issues/33940",
+    "https://github.com/anomalyco/opencode/issues/56282",
+    "https://github.com/anomalyco/opencode/pull/64359",
+    "https://github.com/opensiro/upstream/pull/72"
+  ],
+  "note": "Repeated source-first non-blind NO_GO comparison on current original dev@11883188a61b12a30bc4fb263cd217343981ca37; accepted Index included pinned; three-source structural validation PASS. Earlier original historical NO_GO preserved in Git history. NOT counted as new independent clean-room rerun. No product code/external publication; native tests NOT_RUN, cost NOT_MEASURED.",
+  "next_action": "Re-evaluate only after native V2 revert and network SQLite fixes demonstrate a distinct unresolved peer coordination need."
+}

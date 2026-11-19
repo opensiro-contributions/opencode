@@ -1,26 +1,35 @@
-# anomalyco/opencode — AI constructor feasibility and falsifier
+# OpenCode — AI/developer C-sufficiency, repeated NO_GO (2026-11-20)
 
-**Target transition:** NO_QUALIFIED_C_TARGET
-**Proposal-stage decision:** NO_GO
-**Research disposition:** NO_USEFUL_CHANGE
+**Level 2 / AI.** Proposal-only source recheck; previous OpenSiro case existence known, strict fresh-chat independence NOT claimed.
 
-Human [issue.md](issue.md), canonical [roadmap.md](roadmap.md). Internal PLAN_ONLY draft; historical grades only in canonical receipt/Human.
+**Target transition:** `NO_QUALIFIED_C_TARGET`
+**Proposal-stage decision:** `NO_GO`
+**Research disposition:** `NO_USEFUL_CHANGE`
 
-## Boundary and functional counterfactual
+[roadmap.md](roadmap.md) · [issue.md](issue.md)
 
-OpenCode native core Session/Revert/Snapshot mechanisms and concurrent coding sessions sharing a workspace; excludes out-of-tree plugin coordination and project governance. Question: Avoid one concurrent session's undo reverting another session's edits and prevent shared-store corruption. First-party sources [packages/core/src/session/revert.ts](https://github.com/anomalyco/opencode/blob/b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c/packages/core/src/session/revert.ts); [packages/core/src/session/session.ts](https://github.com/anomalyco/opencode/blob/b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c/packages/core/src/session/session.ts); [specs/v2/session.md](https://github.com/anomalyco/opencode/blob/b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c/specs/v2/session.md). If a new model or reviewer is removed, could the native producer/host and existing issue fixes still solve the same concrete task? At present yes for the bounded research stage; there is no independently demonstrated new decision right.
+## Evidence/pins
 
-## Track A and Track B
+- Original `anomalyco/opencode dev@11883188a61b12a30bc4fb263cd217343981ca37`, accepted `included` [Index](https://github.com/opensiro/vsm-harness-index/blob/c2e43bf4750841277b3e58d8ba80314121734764/assessments/op/opencode.md), blob `60cd4ec5d2dd5ba620c815e3579d198ab5274036`, historical `review_ref=95daf90670b7c039c436c85537da5fbfe2205b41`, date 2026-09-15, Profile 0.2.1 / Methodology 0.3.1.
+- Boundary: installed first-party v2 Agent + per-session execution and revert/snapshot, SQL persistence, optional child tasks and plugins; filesystem semantics and human S5 remain outside.
+- Current [run coordinator](https://github.com/anomalyco/opencode/blob/11883188a61b12a30bc4fb263cd217343981ca37/packages/core/src/session/run-coordinator.ts) serializes per key; [revert planner](https://github.com/anomalyco/opencode/blob/11883188a61b12a30bc4fb263cd217343981ca37/packages/core/src/session/revert.ts) uses session IDs, but [snapshot restoration](https://github.com/anomalyco/opencode/blob/11883188a61b12a30bc4fb263cd217343981ca37/packages/core/src/snapshot.ts) selects paths without a demonstrated cross-session revision-owner check. This admits source-backed tests, not a claim current undo always loses work.
+- Native source PR [#64359](https://github.com/anomalyco/opencode/pull/64359) OPEN, head `e5ebc83a7d2078d6884af339b053768af3dd612b`, current v2 code plus regression test proposal; [#63475](https://github.com/anomalyco/opencode/pull/63475) OPEN, head `61fe7576834a3444c5b37100d5f388a4a8ab7605`, former packages/opencode tree-failure handler; [#54396](https://github.com/anomalyco/opencode/pull/54396) CLOSED_UNMERGED, never presume shipped.
+- Original #33940 CLOSED by migration triage, not demonstrated V2 fix. #56282 OPEN; [database](https://github.com/anomalyco/opencode/blob/11883188a61b12a30bc4fb263cd217343981ca37/packages/core/src/database/database.ts) still sets WAL/5s busy_timeout in supported SQLite environments, shared network filesystem issues need native storage and service coordination.
 
-| Function-specific obligation | Existing original path | Smallest future proposal versus no-construction | Falsifier |
+## Counterfactual requirements
+
+A qualified S2=C should have two separate operational peer S1 agents, independently observed legitimate conflicting commitments, an **actual developer-composed first-party decisive** coordinator that can grant bounded `admit/defer/replan`, apply it under external operator S5 rights, and return result/feedback to both agents after later file operations. A deterministic file lock, rollback guard, Git merge, host scheduler, or plugin scheduling a single queue is not proof of such separate C decision right.
+
+| Target | Cheapest native baseline | On-top delta | Disqualifier |
 | --- | --- | --- | --- |
-| Separate lawful decision and evidence | Open session undo conflict and shared SQLite filesystem failures are tracked in original Issues. Open PR #64359 handles parent/subagent rollback tracking, #63475 handles pruned snapshot safety; none is merged proof of completed conflict fix. | No added autonomous S2=C controller at this stage; prefer source-native rollback ownership, optimistic conflict checks/transaction boundaries and filesystem-safe storage investigation in tracked Issues/PRs. | After scoped native snapshot and rollback fixes, a reproducible peer coordination problem still needs a developer-composed autonomous negotiator choosing among conflicting session commitments and feeding a lawful new work plan back to both sessions |
-| Applied correction and later operational feedback | Existing first-party state, host permissions and current tool/task loops | Do not add speculative port; fix native defect, then retest separate owner and parent authority | New path adds no unique outcome or cannot enforce lawful correction |
+| Concurrent independent writes | Per-file writer provenance/CAS, sibling worktrees and Git merge-back | Independent actor chooses among conflicting legitimate tasks | Native protections already preserve both intended edits |
+| Session /undo after peer changes | Session-scoped snapshot planning, restore against known file revision | Intervene in session priority/intent | No lawful need beyond stale-write rejection and user resolution |
+| Parent/child rollback | Pending PR #64359 provenance | Separate reviewer/controller | Parent/child is hierarchical, not independent peer decision |
+| Corrupt NFS WAL / shared service | Node-local `XDG_DATA_HOME` or one DB writer; native storage compatibility fix | Agent-chosen DB writer | Filesystem locking is not a choice autonomous S2 solves |
+| New independent organization | Opt-in first-party port, parent scoped tools/permissions, task feedback | Proposed C actor | No observed demand/benefit at current source |
 
-## Engineering and native validation boundary
+## Test plan and guardrails
 
-P1 Compare active #64359/#63475 actual patches and original #33940/#56282 reproduction; determine independent peer conflict ownership only after base bugs fixed; P2 NONE. Consider candidate only if source and maintainer permit actual decision/enforcement feedback on this supported runtime. Do not re-label logging, a named reviewer, task delegation or model catalog change as an autonomous function. Native acceptance scenarios **NOT_RUN**: Two simultaneous sessions editing overlapping and nonoverlapping files; undo/revert preserving other session's data; concurrent SQLite WAL store under supported filesystem; native regression tests NOT_RUN. Negative controls: stale/missing owner, permission denial, baseline compatibility and duplicate/native fix competitor where applicable. Falsifier: After scoped native snapshot and rollback fixes, a reproducible peer coordination problem still needs a developer-composed autonomous negotiator choosing among conflicting session commitments and feeding a lawful new work plan back to both sessions.
+If authorized for implementation later: two independent sessions A/B edit different files and same file; stage an undo from A after B's edit; ensure no B loss, no stale snapshot deletion, no unconsented overwrite; nested child and parent commit handling; session cancellation. For database test distinct local files and supported sharing patterns; isolate NFS tests to disposable data. Baseline A should satisfy these before testing autonomy. Optional B must demonstrate a distinct lawful decision *and* later-operation feedback under the same input, performance and maintenance accounting. Negative missing actor/parent denial/stale version must leave user work intact.
 
-## Decision, rights and handoff
-
-**NO_GO / NO_USEFUL_CHANGE**. Prior OpenCode case NO_GO on native-first S2; current source tree moves task behavior to core and open rollback PRs continue to cover the bounded need. No independent novel C requirement emerges.. No implemented constructor, current Index grade, cost result, original-facing Issue/PR or public fork Issue; all external publication DRAFT — NOT PUBLISHED. AI assistance acknowledged.
+Do not add product code, claim tests pass, open original issue/PR/comment, change Index, or claim a closed V1 issue means V2 is fixed. `ACTIVE/ALLOW` is internal metadata only. **Validation state: NOT_RUN**, cost **NOT_MEASURED**. Scoped verdict **NO_GO / NO_USEFUL_CHANGE** is legitimate until falsified; historical metadata remains in Git history, with source-specific limits.
