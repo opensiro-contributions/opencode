@@ -1,42 +1,51 @@
-# OpenCode — repeated NO_GO, concurrent session interference (2026-11-20)
+# OpenCode — optional native S2 coordination for concurrent file edits (Wave 4)
 
-**Level 1 / Human decision.** Current-source recheck of existing Upstream #58 `NO_GO`; non-blind rerun, not a new independent first attempt.
+**PLAN_ONLY · proposal-stage GO · research NEEDS_EVIDENCE · DRAFT — NOT PUBLISHED**
 
-**Target transition:** `NO_QUALIFIED_C_TARGET`
-**Proposal-stage decision:** `NO_GO`
-**Research disposition:** `NO_USEFUL_CHANGE`
+**One-sentence proposal:** Offer one opt-in first-party Core construction seam for a developer-composed autonomous coordinator to make and enforce different permitted edit decisions when two live OpenCode Sessions target the same FileAccess resource, with feedback delivered to later work.
 
-[roadmap.md](roadmap.md) · [constructor-sufficiency.md](constructor-sufficiency.md)
+**Canonical receipt:** [roadmap.md](roadmap.md). **Implementation/validation companion:** [constructor-sufficiency.md](constructor-sufficiency.md).
+**Working fork:** opensiro-contributions/opencode, stable case .opensiro/issues/opencode-session-collision-20261119 on opensiro/meta.
 
-## Decision
+**Target transition:** S2=— -> S2=C
+**Proposal-stage decision:** GO
+**Research disposition:** NEEDS_EVIDENCE
 
-**NO_GO to building an additional autonomous VSM S2=C peer controller now.** This does **not** mean parallel OpenCode sessions are free of data-loss risks. The original [#56282](https://github.com/anomalyco/opencode/issues/56282) is OPEN for network-filesystem WAL corruption. [#33940](https://github.com/anomalyco/opencode/issues/33940) is CLOSED because of v1→v2 triage, not verified v2 regression resolution.
+## Historical general VSM assessment and source-first screen
 
-Current original source is [`dev@11883188a61b12a30bc4fb263cd217343981ca37`](https://github.com/anomalyco/opencode/commit/11883188a61b12a30bc4fb263cd217343981ca37). The [accepted Index](https://github.com/opensiro/vsm-harness-index/blob/c2e43bf4750841277b3e58d8ba80314121734764/assessments/op/opencode.md) is historical, not regraded: `review_ref=95daf90670b7c039c436c85537da5fbfe2205b41`, reviewed 2026-09-15, Profile 0.2.1 / Methodology 0.3.1, blob `60cd4ec5d2dd5ba620c815e3579d198ab5274036`.
+Accepted Index: [included assessment](https://github.com/opensiro/vsm-harness-index/blob/1c2352b72bcb70cead9ffed869c0c31b0496b2ba/assessments/op/opencode.md), blob 60cd4ec5d2dd5ba620c815e3579d198ab5274036, review source 95daf90670b7c039c436c85537da5fbfe2205b41 (2026-09-15), Profile 0.2.1 / methodology 0.3.1. **Accepted historical** states describe ownership at the old revision, not grades for [current dev@1607d4e624bfb2e25cf2fe6a5c44be443faa9153](https://github.com/anomalyco/opencode/commit/1607d4e624bfb2e25cf2fe6a5c44be443faa9153). System in focus is the OpenCode v2 first-party agent/session runtime, including supported Core tools, optional CodeMode, per-session execution and file operations; external shell writers, arbitrary plugins, other server processes and OpenCode maintainers are outside this S2 candidate.
 
-## Six-function current-source screen
-
-| Function | Historical state | Current observed owner/closure | New C justification |
+| Function / ordinary role | Historical Index | Current first-party ownership at the scoped boundary | Candidate / priority |
 | --- | --- | --- | --- |
-| **S1 · Operations** | A | Agent runs code/tools in a session and receives tool/model feedback | Existing, no C target |
-| **S2 · Coordination** | — | SessionRunCoordinator serializes by session key, but distinct sessions share paths; native snapshot/worktree repair is needed | No independent C need proven |
-| **S3 · Current management** | — | Users/host control overall task priority; individual sessions lack autonomous whole-portfolio decision right | Not justified |
-| **S3* · Audit** | — | Errors/traces/snapshot capture alone do not have separate corrective authority | Not justified |
-| **S4 · Future adaptation** | — | No supported prospective external-environment choice-to-S3 loop in this case | Not justified |
-| **S5 · Ultimate policy** | — | User/project configuration and maintainer authority remain outside autonomous runtime | Parent-reserved |
+| **S1 · Operations** | A | [Agent](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/packages/core/src/agent.ts) and Session execute coding/tool tasks with returned observations | Existing, no new C |
+| **S2 · Coordination** | — | [RunCoordinator](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/packages/core/src/session/run-coordinator.ts) serializes each Session; [FileMutation](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/packages/core/src/file-mutation.ts) serializes cooperating file writes, but not independent inter-Session autonomous choices | **P0** S2 constructor hypothesis |
+| **S3 · Current management** | — | Per-Session execution and job views are not a demonstrable whole-project commitment owner | DEFER, not a proven deficit |
+| **S3* · Independent audit** | — | Logs, tests and snapshots are observers, not a separately owned corrective audit actor | NO_TARGET here |
+| **S4 · Future adaptation** | — | Current config/model behavior does not establish prospective external-change adaptation | NO_TARGET here; intent UNKNOWN |
+| **S5 · Identity/policy** | — | Application/user permits operations; maintainer governs product adoption | Parent-reserved, no local S5 |
 
-The six symbols describe historical function *ownership*, not maturity. No automatic promotion from `—` to `C`.
+States A (agent-owned), C (developer-composable autonomous owner) and — (no proven path in the historical assessment) are ownership categories, not quality or maturity scores. No mandatory six-feature requirement follows.
 
-## Existing solution versus new controller
+## The specific proposed capability
 
-| Source-native Track A | Optional Track B | Verdict |
-| --- | --- | --- |
-| [SessionRevert](https://github.com/anomalyco/opencode/blob/11883188a61b12a30bc4fb263cd217343981ca37/packages/core/src/session/revert.ts) selects files from session messages; [Snapshot.restore](https://github.com/anomalyco/opencode/blob/11883188a61b12a30bc4fb263cd217343981ca37/packages/core/src/snapshot.ts) restores paths | Add actor arbitrating conflicts between peer agents | No proof deterministic per-file CAS/worktree isolation would fail |
-| [#64359](https://github.com/anomalyco/opencode/pull/64359) OPEN on child snapshot provenance; [#63475](https://github.com/anomalyco/opencode/pull/63475) OPEN legacy pruned-tree rollback | Independent autonomous reviewer | Does not fix missing tree or old file content |
-| [#56282](https://github.com/anomalyco/opencode/issues/56282) OPEN; SQLite WAL on shared network FS; local-state/single-writer alternative | Agent DB coordinator | Cannot supply missing filesystem lock guarantees |
+Two independently executing Sessions may edit the same local target. OpenCode already has process-local file locks and ordinary permission; those serialize or authorize narrow operations without selecting **which legitimate peer task should proceed next and why**. Under the hypothesis, the app developer installs a separately operating S2 coordinator that sees both live edit intents and file revisions; it may choose **admit / defer / handoff**, enforce that choice through the first-party file mutation boundary and send the result to the affected Session.
 
-**P0** no qualified new C target. **P1** compare/validate native snapshot revert regression, file ownership, worktree separation and SQLite storage invariants under disposable tests. **P2** independent S2 actor only if two legitimate agent commitments cannot be resolved by least-cost native controls.
+Native minimal connection: [FileAccess.Invocation.sessionID and FileAccess.key](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/packages/core/src/file-access.ts) identify the Sessions and canonical file; [FileWrite](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/packages/core/src/file-write.ts) retains user approval; [FileMutation.withLock](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/packages/core/src/file-mutation.ts) supplies the guarded commit boundary; [SessionInbox](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/packages/core/src/session/inbox.ts) and [SessionExecution](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/packages/core/src/session/execution.ts) return durable feedback/wake. The proposed **missing** piece is an opt-in, legitimate autonomous peer decision + lease/fence and feedback bridge in these specific code paths. It must never hold a file lock during a model or user decision.
 
-**Falsifier:** two lawful parallel session edits still collide even after native per-file version guard + isolated worktrees, and an independently composed, parent-authorized mediator makes a distinct admit/defer/replan decision with reproducibly better later task outcomes.
+**Native alternative:** separate worktrees, existing edit/patch per-path locking, stale version rejection and operator resolution. If all the operator wants is no lost file contents, these may be simpler; no requirement that maintainers ship a new actor.
 
-**Runtime tests:** NOT_RUN. **Cost:** NOT_MEASURED. **Publication:** no external Issue/PR/comment or fork Issue; do not call closed v1 #33940 a shipped fix.
+**Track A overlap:** [#64869](https://github.com/anomalyco/opencode/issues/64869) OPEN edit lock deadlock; [#65169](https://github.com/anomalyco/opencode/pull/65169) and [#65201](https://github.com/anomalyco/opencode/pull/65201) OPEN unmerged permission/lock patches; [#60998](https://github.com/anomalyco/opencode/pull/60998) OPEN database inbox lock scope; [#64359](https://github.com/anomalyco/opencode/pull/64359) OPEN subagent revert provenance. None currently establishes an autonomous S2 peer decision owner. Reports [#40255](https://github.com/anomalyco/opencode/issues/40255) and [#33940](https://github.com/anomalyco/opencode/issues/33940) are historical CLOSED, not proof of a current bug or a product need.
+
+**P0:** optional Core S2 construction for in-scope edits. **P1:** permission/decision/commit-revision/feedback wiring covering declared Core mutation paths and safety around undo; verify original code and tests. **P2:** NONE. Host authority remains intact; external shell and NFS operations are not guaranteed.
+
+## Planned acceptance and falsifier
+
+Under a disposable two-Session same-resource test, a developer-composed actor must select **defer** for one Session, then legally **handoff** after feedback; a different lawful decision must produce a different subsequent tool/session outcome. A missing owner preserves existing native behavior. A revoked/stale decision must never apply a write; cancelled session and skipped tool/undo paths must fail safely. Compare the same scenario with native mutex/worktree control. If the actor cannot enforce/return alternative choices, the proposed C is **incomplete**. Passing native tests and measured advantages are **not claimed**.
+
+**Status:** GO / NEEDS_EVIDENCE is architectural proposal-stage only; **native tests NOT_RUN**, benefit/cost **NOT_MEASURED**, no code implementation, no original maintainer acceptance, and no Index regrade. Older same-case NO_GO remains available in Git history because it concerned unproven additional product value; acceptance of a design and a product decision are separate.
+
+## Publication and owner handoff
+
+**Public fork Issue title (draft only):** OpenCode — optional first-party S2 peer coordination for concurrent Core edits.
+
+**Public fork Issue body (draft only):** This document is the proposed Issue body: historical Index context, native source links, the single bounded S2 target, alternative native approaches, owner rights, falsifiable acceptance and limitations above. **DRAFT — NOT PUBLISHED**; a public fork Issue and any external original Issue/PR/comment need separate exact current-conversation consent. OpenCode [CONTRIBUTING](https://github.com/anomalyco/opencode/blob/1607d4e624bfb2e25cf2fe6a5c44be443faa9153/CONTRIBUTING.md) also requires feature-request design approval before implementation PR. There is no automatic proposal to external maintainers.

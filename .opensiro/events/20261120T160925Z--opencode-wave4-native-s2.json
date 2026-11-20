@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "20261120T160925Z--opencode-wave4-native-s2",
+  "recorded_at": "2026-11-20T16:09:25Z",
+  "actor": "ChatGPT source-first Roadmap operator under Upstream #58",
+  "kind": "CHECKPOINT",
+  "decision": "WAVE4_V0181_GO / NEEDS_EVIDENCE / S2=— -> S2=C",
+  "evidence_urls": [
+    "https://github.com/opensiro/upstream/issues/58#issuecomment-7043458501",
+    "https://github.com/opensiro/upstream/issues/58#issuecomment-7043555021",
+    "https://github.com/anomalyco/opencode/commit/1607d4e624bfb2e25cf2fe6a5c44be443faa9153",
+    "https://github.com/opensiro/vsm-harness-index/blob/1c2352b72bcb70cead9ffed869c0c31b0496b2ba/assessments/op/opencode.md",
+    "https://github.com/anomalyco/opencode/pull/65201"
+  ],
+  "note": "Separate current Wave 4 proposal-stage native-specific C constructibility conclusion, after temporally sealed source-first checkpoint and historical comparison. Refines original-specific FileAccess/FileWrite/FileMutation/SessionInbox/Execution integration; preserves preceding NO_GO records in Git. Not clean-room independent context; native tests NOT_RUN, benefit NOT_MEASURED, product and public Issues NOT_PUBLISHED. Original owner adoption retained.",
+  "next_action": "When authorized later, owner may review unpublished fork Issue draft, compare native baseline and test a bounded opt-in S2 constructor before any product implementation or external communication."
+}

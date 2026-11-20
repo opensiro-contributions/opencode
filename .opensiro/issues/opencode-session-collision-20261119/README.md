@@ -1,24 +1,14 @@
-# OpenCode — Upstream #58 repeated NO_GO source recheck
+# OpenCode — Upstream #58 Wave 4 neutral/native-specific S2 rerun
 
-**Current observation:** 2026-11-20 · **Original default dev HEAD:** [11883188a61b12a30bc4fb263cd217343981ca37](https://github.com/anomalyco/opencode/commit/11883188a61b12a30bc4fb263cd217343981ca37) · **Index:** accepted historical assessment (reviewed 2026-09-15, unchanged).
+**Current operator research verdict: GO / NEEDS_EVIDENCE; PLAN_ONLY and HYPOTHETICAL.** Historical accepted S2=— -> proposed developer-composable S2=C; **not shipped, not Index-regraded, not a product mandate.**
 
-- **New scoped proposal-stage decision:** **NO_GO** (`NO_QUALIFIED_C_TARGET`)
-- **Research disposition:** **NO_USEFUL_CHANGE**
-- **Original concern:** prevent one session's `/undo` overwriting another session's work and handle SQLite WAL on shared network homes, without fabricating a new autonomous S2 function
-- **Current owner state:** ACTIVE / ALLOW for internal `opensiro/meta` case maintenance
-- **Classification:** REPEATED SOURCE-FIRST RECHECK, **NON_BLIND**; do not count as a new strict independent #58 first attempt
-- **Current [roadmap.md](roadmap.md) · [Human issue.md](issue.md) · [AI constructor-sufficiency.md](constructor-sufficiency.md)** — full current source pins and rationale
-- **Historical first independent canonical case:** [0014547bb4dcc5c46fef60b2a2538b68be5ffb7f](https://github.com/opensiro-contributions/opencode/commit/0014547bb4dcc5c46fef60b2a2538b68be5ffb7f), source `dev@b4d81f04ad350b9a9de7ec97af3ce93ecb5c5e2c` (preserved in Git history)
-- **Coordination:** [Upstream #58](https://github.com/opensiro/upstream/issues/58) and [internal PR #72](https://github.com/opensiro/upstream/pull/72)
-
-## Native overlap / exact boundary
-
-- Original [#33940](https://github.com/anomalyco/opencode/issues/33940) is CLOSED due to V1→V2 triage, **not** proof of a V2 fix
-- Original [#56282](https://github.com/anomalyco/opencode/issues/56282) remains OPEN for network filesystem SQLite contention/corruption
-- [PR #64359](https://github.com/anomalyco/opencode/pull/64359) OPEN, latest checked head `e5ebc83a7d2078d6884af339b053768af3dd612b`, parent/nested-subagent rollback snapshots; [PR #63475](https://github.com/anomalyco/opencode/pull/63475) OPEN legacy packages/opencode missing-tree safety (not shipped V2)
-- [PR #54396](https://github.com/anomalyco/opencode/pull/54396) CLOSED_UNMERGED busy retry; no imported claims of merged work
-- Existing per-session execution serialization and path-scoped snapshot restore do not prove an independently valuable S2 actor. Cheapest native controls are per-file revision checks, worktree isolation and filesystem-compatible storage.
-
-## Validation / publication
-
-Upstream main v0.18 `scripts/validate_capability_roadmap.py` checked the three current case files locally: **STRUCTURAL PASS**. Original native runtime tests: **NOT_RUN**. Benefit and cost: **NOT_MEASURED**. No original/fork GitHub Issue or product code publication, Index regrade, independent source-trust attestation or maintainer acceptance. New source-pinned metadata commit and event are read back separately before claiming remote persistence.
+- Source: [OpenCode dev@1607d4e624bfb2e25cf2fe6a5c44be443faa9153](https://github.com/anomalyco/opencode/commit/1607d4e624bfb2e25cf2fe6a5c44be443faa9153), refreshed after [sealed first pass](https://github.com/opensiro/upstream/issues/58#issuecomment-7043555021) at dev@55c6827566ed4b45dd22e2fdb5660374e87faf11
+- Accepted [Index@1c2352b72bcb70cead9ffed869c0c31b0496b2ba](https://github.com/opensiro/vsm-harness-index/blob/1c2352b72bcb70cead9ffed869c0c31b0496b2ba/assessments/op/opencode.md), blob 60cd4ec5d2dd5ba620c815e3579d198ab5274036, reviewed 2026-09-15, Profile 0.2.1 / methodology 0.3.1
+- [Canonical case decision](roadmap.md) · [Human/fork Issue draft](issue.md) · [AI first-party constructor and test contract](constructor-sufficiency.md)
+- Scope: optional, local-Environment inter-Session coordinated file edits using FileAccess.sessionID/key, FileWrite/Mutation guarded commit and SessionInbox/Execution return; no generic new S2 platform, cross-host/NFS/shell guarantees or S5 delegation
+- Why outcome changed: former NO_GO assessed unproven additional product utility; current neutral GO assesses architectural constructibility under v0.18.0, refined for original-native integration under v0.18.1. Original maintainer retains product adoption.
+- Previously recorded [historical NO_GO at fork commit 10ce528](https://github.com/opensiro-contributions/opencode/commit/10ce52828e926a41c8731367f66264fec84de5c6), retained immutable in Git history; new same-chat source-first finding is not falsely claimed fully blind.
+- Subsequent original dev HEAD c1a6e6f0ead147cacc3106ea749c427b76363989 changes UI focus only; pinned Core evidence remains at 1607d4e624bfb2e25cf2fe6a5c44be443faa9153.
+- Structural validator: verify before commit and on readback; native tests **NOT_RUN**; impact/cost **NOT_MEASURED**.
+- Public fork Issue and original maintainer interactions **NOT_PUBLISHED**; no new Upstream run-only PR or .md under current reporting rules.
+- Coordination: [Upstream #58](https://github.com/opensiro/upstream/issues/58) (claim and source-first checkpoint) and canonical fork-local event 20261120T160925Z--opencode-wave4-native-s2.
