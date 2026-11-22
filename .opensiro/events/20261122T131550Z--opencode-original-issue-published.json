@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "20261122T131550Z--opencode-original-issue-published",
+  "recorded_at": "2026-11-22T13:15:50Z",
+  "actor": "ChatGPT OpenSiro Upstream operator, separately owner-approved original Issue publication",
+  "kind": "PUBLICATION",
+  "decision": "ORIGINAL_GITHUB_ISSUE_PUBLISHED / EXACT_CURRENT_CONVERSATION_OWNER_APPROVAL",
+  "evidence_urls": [
+    "https://github.com/anomalyco/opencode/issues/65553",
+    "https://github.com/opensiro-contributions/opencode/issues/1",
+    "https://github.com/opensiro-contributions/opencode/commit/496b534d61f1b1ca34c5b58e21817e993616d071",
+    "https://github.com/anomalyco/opencode/commit/ee5fe34e136488a1839ac73bcca8321c51a31b75",
+    "https://github.com/opensiro/upstream/issues/93"
+  ],
+  "note": "Owner explicitly approved the exact title and complete body of a new architecture-design Issue in the original anomalyco/opencode repository, separately from prior fork Issue #1. Upstream v0.18.3 canonical case and external payload validators PASS; original dev HEAD and related Issues/PRs checked. GitHub created anomalyco/opencode #65553 OPEN; immediate REST readback title and body exactly matched approved bytes (SHA-256 cc45d4b31bb513ee975b0346d8eacd9da4fa5a5f8d77ffc9bd7d107f35683503). No product implementation, tests or new VSM grade. No extra original comment or PR posted.",
+  "next_action": "Observe maintainer feedback; only respond to external discussion after separate exact current-conversation approval. Retain fork Issue and original Issue as independent OPEN discussions."
+}
