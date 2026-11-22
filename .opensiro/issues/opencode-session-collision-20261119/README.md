@@ -12,3 +12,5 @@
 - Structural validator: verify before commit and on readback; native tests **NOT_RUN**; impact/cost **NOT_MEASURED**.
 - Public fork Issue and original maintainer interactions **NOT_PUBLISHED**; no new Upstream run-only PR or .md under current reporting rules.
 - Coordination: [Upstream #58](https://github.com/opensiro/upstream/issues/58) (claim and source-first checkpoint) and canonical fork-local event 20261120T160925Z--opencode-wave4-native-s2.
+
+**Case navigation:** [issue.md](issue.md) · [constructor-sufficiency.md](constructor-sufficiency.md) · [roadmap.md](roadmap.md).

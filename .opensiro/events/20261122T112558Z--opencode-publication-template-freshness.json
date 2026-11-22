@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "20261122T112558Z--opencode-publication-template-freshness",
+  "recorded_at": "2026-11-22T11:25:58Z",
+  "actor": "ChatGPT OpenSiro Upstream operator, owner-directed pilot #93",
+  "kind": "CHECKPOINT",
+  "decision": "CASE_TEMPLATE_RECONCILED / AGE_SOURCE_REFRESH / EXISTING_GO_UNCHANGED / PUBLICATION_NOT_AUTHORIZED",
+  "evidence_urls": [
+    "https://github.com/opensiro/upstream/issues/93",
+    "https://github.com/opensiro/upstream/issues/58",
+    "https://github.com/anomalyco/opencode/commit/ee5fe34e136488a1839ac73bcca8321c51a31b75",
+    "https://github.com/anomalyco/opencode/issues/64869",
+    "https://github.com/anomalyco/opencode/issues/40255",
+    "https://github.com/anomalyco/opencode/issues/52297",
+    "https://github.com/anomalyco/opencode/pull/60074",
+    "https://github.com/anomalyco/opencode/pull/65201"
+  ],
+  "note": "Case Human/AI/README reconciled to current numbered Upstream template and both structural validators PASS locally; original case decision remains GO / NEEDS_EVIDENCE, source cut @1607d4e preserved as research provenance. Read-only age-triggered re-review of old original Issues and present Core dev @ee5fe34. Not a current Index regrade, native test PASS, product adoption, verified new user demand or external public Issue; public fork/original publication still requires exact human approval.",
+  "next_action": "Prepare exact non-duplicative fork-local GitHub Issue title/body and seek owner approval. Original third-party publication requires separate specific approval."
+}
