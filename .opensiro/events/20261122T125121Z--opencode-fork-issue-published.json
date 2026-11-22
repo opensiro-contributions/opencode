@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "20261122T125121Z--opencode-fork-issue-published",
+  "recorded_at": "2026-11-22T12:51:21Z",
+  "actor": "ChatGPT OpenSiro Upstream operator, owner-directed publication pilot #93",
+  "kind": "PUBLICATION",
+  "decision": "FORK_GITHUB_ISSUE_PUBLISHED / EXACT_CURRENT_CONVERSATION_OWNER_APPROVAL",
+  "evidence_urls": [
+    "https://github.com/opensiro-contributions/opencode/issues/1",
+    "https://github.com/opensiro/upstream/issues/93",
+    "https://github.com/opensiro-contributions/opencode/commit/7ab94378e661c4bdf5f02dfded016a766e4cd298",
+    "https://github.com/anomalyco/opencode/commit/ee5fe34e136488a1839ac73bcca8321c51a31b75"
+  ],
+  "note": "Created the single public OpenSiro fork Issue #1 using the owner-approved exact title and eight-section public Human body from the verified canonical case. Read back the GitHub Issue as OPEN; title and body bytes match the approved artifact. Public body SHA-256: 8d17c7a29eb984fc9cb011d33a4d96159bfef4b0d5e069a2a855a1af98c91260. No original-maintainer message or product implementation; existing Roadmap/AI source and GO / NEEDS_EVIDENCE conclusion unchanged.",
+  "next_action": "Observe fork Issue feedback as permitted; require separate exact approval before public original-maintainer Issue, comment or PR."
+}
